@@ -6,7 +6,4 @@
 
 const { createCoreController } = require("@strapi/strapi").factories;
 
-module.exports = createCoreController(
-  "api::player.player",
-  ({ strapi }) => ({})
-);
+module.exports = createCoreController("api::player.player");

@@ -1,6 +1,20 @@
-const utils = require("@strapi/utils");
 const { updateEntity } = require(".");
-const { ApplicationError } = utils.errors;
+const { CustomApplicationError } = require("../exception/Error");
+
+const findAllCourts = async ({ strapi }) => {
+  return await strapi.entityService
+    .findMany("api::court.court", {
+      sort: { createdAt: "DESC" },
+      populate: { bookings: true },
+    })
+    .catch((error) => {
+      throw new CustomApplicationError({
+        message: "There is something wrong",
+        serviceName: "findAllCourts DAO",
+        error: error,
+      });
+    });
+};
 
 const updateCourtBookingSlots = async ({ courtId, updatedData, strapi }) => {
   await strapi.entityService
@@ -24,6 +38,7 @@ const updateCourtBookings = async ({ bookings, strapi }) => {
 };
 
 module.exports = {
+  findAllCourts,
   updateCourtBookingSlots,
   updateCourtBookings,
 };

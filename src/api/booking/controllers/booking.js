@@ -1,5 +1,7 @@
 "use strict";
 
+const { handleCreateBooking } = require("../services/bookingCustomService");
+
 /**
  * booking controller
  */
@@ -11,8 +13,6 @@ module.exports = createCoreController("api::booking.booking", ({ strapi }) => ({
     // some custom logic here
     const { data: bookingInputData } = ctx.request.body;
 
-    return strapi
-      .service("api::booking.booking")
-      .handleCreateBooking(bookingInputData);
+    return await handleCreateBooking(bookingInputData);
   },
 }));
