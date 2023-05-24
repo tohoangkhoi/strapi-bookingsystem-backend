@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "courts",
+  "info": {
+    "singularName": "court",
+    "pluralName": "courts",
+    "displayName": "Court",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "bookings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::booking.booking",
+      "mappedBy": "courtId"
+    },
+    "bookingslots": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::bookingslot.bookingslot",
+      "mappedBy": "courtId"
+    }
+  }
+}

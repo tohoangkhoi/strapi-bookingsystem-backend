@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bookingslots",
+  "info": {
+    "singularName": "bookingslot",
+    "pluralName": "bookingslots",
+    "displayName": "bookingslot",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "date": {
+      "type": "string"
+    },
+    "time": {
+      "type": "string"
+    },
+    "courtId": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::court.court",
+      "inversedBy": "bookingslots"
+    },
+    "isBooked": {
+      "type": "boolean"
+    }
+  }
+}
